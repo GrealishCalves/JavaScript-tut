@@ -8,6 +8,7 @@ class Account {
 		this._movements =
 			[]; /* It's a private variable that stores the movements of the account. */
 	}
+
 	/**
 	 * It adds the amount to the balance and pushes the amount to the movements array
 	 * @param amount - The amount of money to deposit.
@@ -15,16 +16,21 @@ class Account {
 	deposit(amount) {
 		this._movements.push(amount);
 		this.balance += amount;
+		return this;
 	}
+
 	/**
 	 * The withdraw function takes an amount as an argument, and then calls the deposit function with the
 	 * amount negated, and then subtracts the amount from the balance
 	 * @param amount - The amount of money to withdraw from the account.
 	 */
+
 	withdraw(amount) {
 		this.deposit(-amount);
 		this.balance - amount;
+		return this;
 	}
+
 	/**
 	 * This function returns the value of the private variable _movements.
 	 * @returns The movements array.
@@ -32,12 +38,14 @@ class Account {
 	getMovements() {
 		return this._movements;
 	}
+
 	/**
 	 * The print() function is a method of the Account class. It prints the name and balance of the account
 	 */
 	print() {
 		console.log(`${this.name} has ${this.balance} balance`);
 	}
+
 	/**
 	 * If the amount is greater than the balance, return false, otherwise return true.
 	 * @param amount - The amount of money the user is requesting to borrow.
@@ -49,6 +57,7 @@ class Account {
 		}
 		return true;
 	}
+
 	/**
 	 * If the loan is approved, subtract the amount from the balance and add the amount to the movements
 	 * array
@@ -63,6 +72,7 @@ class Account {
 			return;
 		}
 		console.log(`${this.name} Loan Reject ${this.balance}`);
+		return this;
 	}
 }
 
@@ -78,4 +88,9 @@ account.print();
 account.requestLoan(500);
 account.print();
 console.log(account);
+console.log(account.getMovements());
+
+/* chaining methods */
+/* It's depositing 100, 200 and withdrawing 50 and requesting a loan of 500. */
+account.deposit(100).deposit(200).withdraw(50).requestLoan(500);
 console.log(account.getMovements());
