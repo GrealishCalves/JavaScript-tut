@@ -55,5 +55,5 @@ class teacher extends person {
 
 const student1 = new student('John', 20, 5);
 const teacher1 = new teacher('Jane', 30, 1000);
-console.log(student1);
-console.log(teacher1);
+console.log(student1.print());
+console.log(teacher1.print());
