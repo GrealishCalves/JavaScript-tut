@@ -5,9 +5,9 @@ class Account {
 	constructor(name, balance) {
 		this.name = name;
 		this.balance = balance;
-		this._movements = [];
+		this._movements =
+			[]; /* It's a private variable that stores the movements of the account. */
 	}
-
 	/**
 	 * It adds the amount to the balance and pushes the amount to the movements array
 	 * @param amount - The amount of money to deposit.
@@ -16,7 +16,6 @@ class Account {
 		this._movements.push(amount);
 		this.balance += amount;
 	}
-
 	/**
 	 * The withdraw function takes an amount as an argument, and then calls the deposit function with the
 	 * amount negated, and then subtracts the amount from the balance
@@ -33,14 +32,17 @@ class Account {
 	getMovements() {
 		return this._movements;
 	}
-
 	/**
 	 * The print() function is a method of the Account class. It prints the name and balance of the account
 	 */
 	print() {
 		console.log(`${this.name} has ${this.balance} balance`);
 	}
-	/* It's checking if the amount is greater than the balance. */
+	/**
+	 * If the amount is greater than the balance, return false, otherwise return true.
+	 * @param amount - The amount of money the user is requesting to borrow.
+	 * @returns true or false
+	 */
 	approveLoan(amount) {
 		if (amount > this.balance) {
 			return false;
