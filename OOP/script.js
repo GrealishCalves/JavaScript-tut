@@ -15,6 +15,7 @@ class Account {
 	deposit(amount) {
 		this._movements.push(amount);
 		this.balance += amount;
+		return this;
 	}
 	/**
 	 * The withdraw function takes an amount as an argument, and then calls the deposit function with the
@@ -24,6 +25,7 @@ class Account {
 	withdraw(amount) {
 		this.deposit(-amount);
 		this.balance - amount;
+		return this;
 	}
 	/**
 	 * This function returns the value of the private variable _movements.
@@ -63,6 +65,7 @@ class Account {
 			return;
 		}
 		console.log(`${this.name} Loan Reject ${this.balance}`);
+		return this;
 	}
 }
 
@@ -78,4 +81,9 @@ account.print();
 account.requestLoan(500);
 account.print();
 console.log(account);
+console.log(account.getMovements());
+
+/* chaining methods */
+/* It's depositing 100, 200 and withdrawing 50 and requesting a loan of 500. */
+account.deposit(100).deposit(200).withdraw(50).requestLoan(500);
 console.log(account.getMovements());
